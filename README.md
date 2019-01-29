@@ -24,7 +24,7 @@ $ sudo docker run -d --name squid-transparent --restart always --net host \
 	-e SSL_O=MyCompany \
 	-e SSL_OU=MyCompany \
 	-e SSL_CERT=SquidCA \
-	-e TZ=Europe/Saratov
+	-e TZ=Europe/Saratov \
   Coun8s/squid-transparent:latest
 ```
 TZ name must match the file from /usr/share/zoneinfo/. Example: Europe/Moscow or America/New_York.
