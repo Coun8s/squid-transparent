@@ -18,13 +18,13 @@ $ sudo docker run -d --name squid-transparent --restart always --net host \
   --volume squid-cache:/var/cache/squid \
   -e SSL_RSA=2048 \
   -e SSL_DAYS=365 \
-	-e SSL_C=RU \
-	-e SSL_ST=Saratov \
-	-e SSL_L=Saratov \
-	-e SSL_O=MyCompany \
-	-e SSL_OU=MyCompany \
-	-e SSL_CERT=SquidCA \
-	-e TZ=Europe/Saratov \
+  -e SSL_C=RU \
+  -e SSL_ST=Saratov \
+  -e SSL_L=Saratov \
+  -e SSL_O=MyCompany \
+  -e SSL_OU=MyCompany \
+  -e SSL_CERT=SquidCA \
+  -e TZ=Europe/Saratov \
   coun/squid-transparent:latest
 ```
 TZ name must match the file from /usr/share/zoneinfo/. Example: Europe/Moscow or America/New_York.
