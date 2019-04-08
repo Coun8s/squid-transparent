@@ -1,0 +1,31 @@
+ image: docker:stable
+
+ variables:
+   DOCKER_HOST: tcp://localhost:2375/
+   DOCKER_DRIVER: overlay2
+
+ services:
+   - docker:dind
+
+ before_script:
+   - docker info
+
+ build:
+   stage: build
+   script:
+     - docker build -t coun/squid-transparent:latest .
+     - docker run -d --name squid-transparent --restart always --net host \
+      -p 3129:3129 -p 3130:3130 -p 3131:3131 \
+      --volume squid-logs:/var/log/squid \
+      --volume squid-etc:/etc/squid \
+      --volume squid-cache:/var/cache/squid \
+      -e SSL_RSA=2048 \
+      -e SSL_DAYS=365 \
+      -e SSL_C=RU \
+      -e SSL_ST=Saratov \
+      -e SSL_L=Saratov \
+      -e SSL_O=MyCompany \
+      -e SSL_OU=MyCompany \
+      -e SSL_CERT=SquidCA \
+      -e TZ=Europe/Saratov \
+      coun/squid-transparent:lates
