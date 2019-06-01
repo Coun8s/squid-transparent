@@ -83,8 +83,8 @@ RUN useradd squid -d /var/spool/squid -s /sbin/nologin \
 && chmod 4755 /usr/lib64/squid/pinger \
 && chmod +x /start.sh
 
-ENV SSL_RSA=2048 \
-    SSL_DAYS=365 \
+ENV SSL_RSA=4096 \
+    SSL_DAYS=3650 \
 	SSL_C=RU \
 	SSL_ST=Saratov \
 	SSL_L=Saratov \
